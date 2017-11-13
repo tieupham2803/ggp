@@ -9,7 +9,10 @@ class Cate extends Model
     //
     protected $table = 'cates';
     protected $fillable = ['name', 'alias', 'order','parent_id','keywords','description'];
-    public $timestamps = false;
+
+
+
+    public $timestamps = true;
 
     public function product(){
     	return $this->hasMany('App\Product');
