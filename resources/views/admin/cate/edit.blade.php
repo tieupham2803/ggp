@@ -6,31 +6,36 @@
                             <small>Edit</small>
                         </h1>
                     </div>
+
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
+                                            @include('admin.blocks.error')
+
                         <form action="" method="POST">
+                                                    <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+
                             <div class="form-group">
                                 <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
+                                <select class="form-control" name="sltParent">
+                                    <option value="0" >Please Choose Category</option>
+                                      <?php cate_parent($parent,0,"--",$data["parent_id"]);?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{!!old('txtCateName',isset($data)?$data['name']: null )!!}" />
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                            <label>Category Order</label>
+                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order"  value="{!!old('txtOrder',isset($data)?$data['order']: null )!!} "/>
                             </div>
                             <div class="form-group">
                                 <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords"  value="{!!old('txtKeywords',isset($data)?$data['keywords']: null )!!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea class="form-control" rows="3" name="txtDescription">{!!old('textDescription',isset($data)?$data['description']: null )!!}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Category Status</label>

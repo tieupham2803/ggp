@@ -37,5 +37,9 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('add',['as'=>'admin.cate.getAdd','uses'=>'CateController@getAdd']);
 		Route::post('add',['as'=>'admin.cate.postAdd','uses'=>'CateController@postAdd']);
 		Route::get('list',['as'=>'admin.cate.list','uses'=>'CateController@getList']);
+		Route::get('delete/{id}',['as'=>'admin.cate.delete','uses'=>'CateController@getDelete']);
+		Route::get('edit/{id}',['as'=>'admin.cate.edit','uses'=>'CateController@getEdit']);
+		Route::post('edit/{id}',['as'=>'admin.cate.edit','uses'=>'CateController@postEdit']);
+
 	});
 });

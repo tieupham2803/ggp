@@ -29,10 +29,19 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ct->id}}</td>
                                 <td>{{$ct->name}}</td>
+                                <td>@if($ct->parent_id==0)
+                                    {!!"NULL"!!}
+                                    @else
+
+                                    <?php
+                                    $parent = DB::table('cates')->where('id',$ct->parent_id)->first();
+                                    echo $parent->name;
+                                ?>
+                                    @endif
+                                </td>
                                 <td>{{$ct->description}}</td>
-                                <td>{{$ct->parent_id}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/cate/delete"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/cate/edit/{{$ct->id}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Ban co chac muon xoa category khong')" href="delete/{{$ct->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a  href="edit/{{$ct->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>
