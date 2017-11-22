@@ -29,8 +29,8 @@ class CateRequest extends FormRequest
             'txtOrder' => 'numeric'
         ];
     }
-    public function message(){
-        return[
+    public function messages(){
+        return [
                 'textCateName.required' => 'Khong duoc de trong Cate Name',
                 'txtCateName.unique' => 'Cate name da ton tai'
         ];

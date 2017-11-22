@@ -40,7 +40,7 @@
                                     @endif
                                 </td>
                                 <td>{{$ct->description}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Ban co chac muon xoa category khong')" href="delete/{{$ct->id}}"> Delete</a></td>
+                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Ban co chac muon xoa category khong')" href="delete/{{$ct->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a  href="edit/{{$ct->id}}">Edit</a></td>
                             </tr>
                             @endforeach

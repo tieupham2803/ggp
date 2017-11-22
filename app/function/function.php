@@ -77,24 +77,56 @@ function stripUnicode($str){
 	return $str;
 }
 
-	function cate_parent($data,$parent = 0, $str="--",$select=0){
-		// echo "<option>sjdjsha</option>";
-		foreach ($data as $value) {
-			$name = $value["name"];
-			$id = $value["id"];
-				// echo "<option>$name</option>";
-			if ($value["parent_id"]==$parent) {
-				if ($select !=0 && $id =$select) {
-					# code...
-					 echo "<option value = '$id' selected = 'selected'>$str $name</option>";
-				}else {
-						echo "<option value = '$id'>$str $name</option>";
-									}
+	// function cate_parent($data,$parent = 0, $str="--",$select=0){
+	// 	// echo "<option>sjdjsha</option>";
+	// 	foreach ($data as $value) {
+	// 		$name = $value["name"];
+	// 		$id = $value["id"];
+	// 			// echo "<option>$name</option>";
+	// 		if ($value["parent_id"]==$parent) {
+	// 			if ($select !=0 && $id =$select) {
+	// 				# code...
+	// 				 echo "<option value = '$id' selected = 'selected'>$str $name</option>";
+	// 			}else {
+	// 					echo "<option value = '$id'>$str $name</option>";
+	// 								}
 
-						cate_parent($data,$id,$str."--");
+	// 					cate_parent($data,$id,$str."--");
 				
-			}
-		}
+	// 		}
+	// 	}
 
+	// }
+	function cate_parent ($data,$parent =0 ,$str="--",$select =0){
+	foreach ($data as  $val){
+		$id =$val["id"];
+		$name=$val["name"];
+
+
+		if($val["parent_id"]==$parent){
+			if($select!=0 && $id==$select){
+			echo "<option value='$id' selected='selected'>$str $name</option>";
+		}
+		else{
+			echo "<option value='$id'>$str $name</option>";
+		}
+		cate_parent($data,$id,$str."--",$select);
 	}
+	}
+}
+
+
+function mail_utf8($to, $from_user, $from_email, $subject = '(No subject)', $message = '')
+{
+	$from_user = "=?UTF-8?B?".base64_encode($from_user)."?=";
+	$subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+	$headers = "From: $from_user <$from_email>\r\n".
+               "MIME-Version: 1.0" . "\r\n" .
+               "Content-type: text/html; charset=UTF-8" . "\r\n";
+	return mail($to, $subject, $message, $headers);
+}
+
+
+
+?>
 ?>

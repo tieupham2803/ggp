@@ -8,7 +8,25 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
+
+
                         <form action="" method="POST">
+                             <?php echo "</br>";?>
+
+                         @include('admin.blocks.error')
+                        {{-- <form action="" method="POST"> --}}
+                    {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                               <div class="form-group">
+                                <label>Category Parent</label>
+                                <select class="form-control" name="sltParent">
+                                    <option value="">Please Choose Category</option>
+                                 {{--    @foreach($parent as $item)
+                                    <option value="">{{$item["name"]}}</option>
+                                    @endforeach --}}
+                                 <?php cate_parent($cate,0,"--",$product["cate_id"]); ?>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" name="txtName" placeholder="Please Enter Username" />

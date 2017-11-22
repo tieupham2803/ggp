@@ -42,4 +42,22 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('edit/{id}',['as'=>'admin.cate.edit','uses'=>'CateController@postEdit']);
 
 	});
+	Route::group(['prefix'=>'product'],function(){
+		Route::get('add',['as'=>'admin.product.getAdd','uses'=>'ProductController@getAdd']);
+		Route::post('add',['as'=>'admin.product.postAdd','uses'=>'ProductController@postAdd']);
+		Route::get('list',['as'=>'admin.product.list','uses'=>'ProductController@getList']);
+		Route::get('delete/{id}',['as'=>'admin.product.delete','uses'=>'ProductController@getDelete']);
+		Route::get('edit/{id}',['as'=>'admin.product.edit','uses'=>'ProductController@getEdit']);
+		Route::post('edit/{id}',['as'=>'admin.product.edit','uses'=>'ProductController@postEdit']);
+
+	});
+	Route::group(['prefix'=>'user'],function(){
+		Route::get('add',['as'=>'admin.user.getAdd','uses'=>'userController@getAdd']);
+		Route::post('add',['as'=>'admin.user.postAdd','uses'=>'userController@postAdd']);
+		Route::get('list',['as'=>'admin.user.list','uses'=>'userController@getList']);
+		Route::get('delete/{id}',['as'=>'admin.user.delete','uses'=>'userController@getDelete']);
+		Route::get('edit/{id}',['as'=>'admin.user.edit','uses'=>'userController@getEdit']);
+		Route::post('edit/{id}',['as'=>'admin.user.edit','uses'=>'userController@postEdit']);
+
+	});
 });
